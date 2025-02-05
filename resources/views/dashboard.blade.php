@@ -37,11 +37,23 @@
                         <li>•	соответствие содержания творческой работы заявленной тематике</li>
                         <li>•	актуальность конкурсной работы</li>
                         <li>•	творческая индивидуальность</li>
-                        <li>•	другое</li>
+                        <li>•   оригинальность идеи, новаторство, творческий подход</li>
+                        <li>•   полнота и образность раскрытия темы</li>
+                        <li>•   качество оформления и наглядность материала</li>
+                        <li>•   соответствие творческого уровня возрасту автора</li>
+                        <li>•   степень самостоятельности выполнения</li>
                     </ul>
+                    <p>
+                        <b>Требование к файлу:</b>
+                    </p>
+                    <p>
+                    Объем файла с работой не должен превышать 1 Мб.
+                    </p>
                 </div>
                    
             </div>
+            <div class='flex gap-5 mt-6'>
+            @if((auth()->user()->isAdmin()===false))
             @if(count($works)===0)
                     <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-350" href="{{ route('works.create') }}">
                         {{ __('СОЗДАТЬ ЗАЯВКУ') }}
@@ -49,12 +61,14 @@
                     @else
                         <span class='font-semibold text-4xl uppercase tracking-widest text-gray-300'>Вы уже отправили работу. Желаем удачи!</span>
                     @endif
+                    @endif
                 
             @if((auth()->user()->isAdmin()===true))
             <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-350" href="{{ route('admin.index') }}">
                 {{ __('Перейти в панель администратора') }}
             </a>
             @endif
+            </div>
         </div>
     </div>
 </x-app-layout>
